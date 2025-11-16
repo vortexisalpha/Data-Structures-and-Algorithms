@@ -6,7 +6,7 @@ class Solution:
 
         for i in range(n):
             if (bmask[i] == 1):
-                for j in range(min(nums[i]+1, n-i)):
+                for j in range(min(nums[i]+1, n-i)-1,-1,-1):
                     bmask[j + i] = 1
             if bmask[n-1] == 1:
                 return True       
