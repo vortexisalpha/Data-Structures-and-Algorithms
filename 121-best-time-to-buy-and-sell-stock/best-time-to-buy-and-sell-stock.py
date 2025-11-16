@@ -6,8 +6,8 @@ class Solution:
         for p in prices:
             if p < min_price:
                 min_price = p
-            else:
-                max_price = max(max_price, p-min_price)
+            elif max_price < p-min_price:
+                max_price =  p-min_price
 
         return max_price
     
