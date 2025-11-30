@@ -9,11 +9,7 @@ class Solution:
         if (len(arr) == 0):
             return None
         mid = (len(arr)) //2
-        cur = TreeNode(arr[mid])
-        left = self.assign(arr[0:mid])
-        right = self.assign(arr[mid+1:len(arr)])
-        cur.left =  left
-        cur.right = right
+        cur = TreeNode(arr[mid],self.assign(arr[0:mid]),self.assign(arr[mid+1:len(arr)]))
         return cur
 
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
