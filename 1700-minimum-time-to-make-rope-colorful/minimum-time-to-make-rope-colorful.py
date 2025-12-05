@@ -1,8 +1,5 @@
 
 class Solution:
-    #return the minimum time sum for separating the balloons
-    # b b b 
-    # 1 2 1
 
     def minCost(self, colors: str, neededTime: List[int]) -> int:
         start = 0
