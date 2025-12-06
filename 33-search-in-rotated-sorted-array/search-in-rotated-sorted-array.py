@@ -8,13 +8,11 @@ class Solution:
         def helper(left, right):
             mid = (left + right) // 2
 
-            print(left,mid,right)
             if left > right:
                 return -1
             end = nums[right]
             start = nums[left]
             mid_val = nums[mid]
-            print("vals:", start,mid_val,end)
 
             if target == mid_val:
                 return mid
