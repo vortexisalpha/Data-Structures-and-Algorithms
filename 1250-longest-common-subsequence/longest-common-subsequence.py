@@ -26,8 +26,6 @@ class Solution:
                     break
             if can_take:
                 take = dp(idx+1,new_last_idx)
-                print(idx+1,new_last_idx)
-
                 ret_val = take + 1
             else:
                 ret_val = 0
