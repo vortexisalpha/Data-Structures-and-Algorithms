@@ -1,23 +1,19 @@
 class Solution:
-    
-    def add_digits(self,digits):
-        if len(digits)>1:
-            self.add_digits(digits[1:])
-        else:
-            for c in self.s_map[int(digits)]:
-                self.out.append(c)
-            return
-        digit = int(digits[0])
-        new_out = []
-        for out in self.out:
-            for c in self.s_map[digit]:
-                print(c)
-                new_out.append(c+out)
-        self.out = new_out
 
     def letterCombinations(self, digits: str) -> List[str]:
-        self.s_map = {2: ["a","b","c"], 3: ["d","e","f"], 4:["g","h","i"], 5: ["j","k","l"], 6:["m","n","o"], 7:["p","q","r","s"],8:["t","u","v"],9:["w","x","y","z"]}
-
-        self.out = []
-        self.add_digits(digits)
-        return self.out
+        s_map = {2: ["a","b","c"], 3: ["d","e","f"], 4:["g","h","i"], 5: ["j","k","l"], 6:["m","n","o"], 7:["p","q","r","s"],8:["t","u","v"],9:["w","x","y","z"]}
+        ans = []
+        def backtrack(digits, cur_word, start_idx):
+            if start_idx > len(digits):
+                return
+            if start_idx == len(digits):
+                ans.append(cur_word)
+                return
+            
+            for letter in s_map[int(digits[start_idx])]:
+                cur_word+=letter
+                backtrack(digits, cur_word, start_idx + 1)
+                cur_word = cur_word[:len(cur_word)-1]
+        
+        backtrack(digits, "", 0)
+        return ans
