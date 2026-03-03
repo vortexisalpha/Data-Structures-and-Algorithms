@@ -2,7 +2,6 @@ class Solution:
     def numberOfSteps(self, num: int) -> int:
         score = 0
         bin_num = str(bin(num))[2:]
-        print(bin_num)
         for bin_char in bin_num:
             if bin_char == '0':
                 score += 1
