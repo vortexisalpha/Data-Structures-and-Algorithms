@@ -1,11 +1,15 @@
 class Solution:
     def numberOfSteps(self, num: int) -> int:
-        steps = 0
-        while(num != 0):
-            steps += 1
-            if num % 2 == 0:
-                num /=2
+        score = 0
+        bin_num = str(bin(num))[2:]
+        print(bin_num)
+        for bin_char in bin_num:
+            if bin_char == '0':
+                score += 1
             else:
-                num -= 1
-        return steps
+                score += 2
+        
+        return score - 1
+
+
         
