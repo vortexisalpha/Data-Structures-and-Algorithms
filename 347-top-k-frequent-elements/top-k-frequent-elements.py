@@ -2,6 +2,5 @@ from collections import Counter
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         cnt = Counter(nums)
-        sol = sorted(cnt.items(), key = lambda x: x[1], reverse=True)
-        return [sol[i][0] for i in range(k)]
+        return heapq.nlargest(k, cnt.keys(), key=cnt.get)
         
