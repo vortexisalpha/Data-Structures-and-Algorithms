@@ -7,7 +7,7 @@ class Solution:
 
         
         cnt = 0  
-        for i, x in enumerate(time):
+        for x in time:
             cnt += time_rem[(60 - (x%60)) % 60]
             if (60 - (x%60)) % 60 == 30 or (60 - (x%60)) % 60 == 0:
                 cnt -= 1
