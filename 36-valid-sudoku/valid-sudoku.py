@@ -1,27 +1,42 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        for row in board:
-            seen = set()
-            for x in row:
-                if x in seen and x != '.':
-                    return False
-                seen.add(x)
 
-        for i in range(len(board[0])):
-            seen = set()
-            for j in range(len(board)):
-                if board[j][i] in seen and board[j][i] != '.':
-                    return False
-                seen.add(board[j][i])
-        
-        col = [(0,0), (1,0), (2,0), (0,1), (1,1), (2,1), (0,2), (1,2), (2,2)]
-
-        for i in range(0,9,3):
-            for j in range(0,9,3):
-                seen = set()
-                for x,y in col:
-                    if board[i+y][j+x] in seen and board[i+y][j+x] != '.':
-                        
+        def cond1():
+            for i in range(len(board)):
+                all_nums = set([str(i) for i in range(1,10)])
+                for j in range(len(board[0])):
+                    if board[i][j] == '.':
+                        continue
+                    elif board[i][j] not in all_nums:
                         return False
-                    seen.add(board[i+y][j+x])
-        return True
+                    else:
+                        all_nums.remove(board[i][j])
+            return True
+
+        def cond2():
+            for j in range(len(board[0])):
+                all_nums = set([str(i) for i in range(1,10)])
+                for i in range(len(board)):
+                    if board[i][j] == '.':
+                        continue
+                    elif board[i][j] not in all_nums:
+                        return False
+                    else:
+                        all_nums.remove(board[i][j])
+            return True
+
+        def cond3():
+            for x in range(3):
+                for y in range(3):
+
+                    all_nums = set([str(i) for i in range(1,10)])
+                    for i in range(3):
+                        for j in range(3):
+                            if board[3*y + i][3*x + j] == '.':
+                                continue
+                            elif board[3*y + i][3*x + j] not in all_nums:
+                                return False
+                            else:
+                                all_nums.remove(board[3*y + i][3*x + j])
+            return True
+        return cond1() and cond2() and cond3()
