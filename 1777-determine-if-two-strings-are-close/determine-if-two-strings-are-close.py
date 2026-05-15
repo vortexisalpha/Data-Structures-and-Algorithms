@@ -6,7 +6,7 @@ class Solution:
 
         s1 = sorted(c1.values())
         s2 = sorted(c2.values())
-        return s1 == s2 and set(c1.keys()) == set(c2.keys())
+        return s1 == s2 and set(word1) == set(word2)
 
         
         
